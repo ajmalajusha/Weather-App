@@ -98,6 +98,7 @@ function App() {
               onKeyDown={Entersearch}
               value={tcity}
             />
+            <button type="button" onClick={search} className="btn btn-success  col-1 mx-auto mt-3">Search</button>
             <div className="card-body mt-5">
               <div className="text-center">
                 <img src={icon} alt="WeatherImg" className="h-25 w-25" />
