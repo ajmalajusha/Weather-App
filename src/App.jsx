@@ -9,7 +9,10 @@ import hevayrain from "../src/assets/hevayrain.png";
 import cloud from "../src/assets/cloud.png";
 import chillcolud from "../src/assets/chillcolud.png";
 import humidityi from "../src/assets/humidity.png";
+import wind_speedimg from "../src/assets/windspeed.png";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./assets/body.css"
+
 
 function App() {
   const [icon, seticon] = useState(sun);
@@ -90,23 +93,28 @@ function App() {
       <div className="container">
         <div className=" h-100 w-100 mt-5">
           <div className="card">
-            <input
+            <div className="row">
+<div className="col-10 col-md-4 mx-auto">
+<input
               type="text"
               placeholder="Enter City"
-              className="form-control w-25 mx-auto mt-5 "
+              className=" form-control   mt-5 "
               onChange={handilcity}
               onKeyDown={Entersearch}
               value={tcity}
             />
-            <button type="button" onClick={search} className="btn btn-success  col-1 mx-auto mt-3">Search</button>
-            <div className="card-body mt-5">
+</div>
+            
+            </div>
+            <button type="button" onClick={search} className="btn btn-success col col-lg-1 mx-auto mt-3">Search</button>
+            <div className="card-body mt-1">
               <div className="text-center">
-                <img src={icon} alt="WeatherImg" className="h-25 w-25" />
+                <img src={icon} alt="WeatherImg" className="img" style={{height:"25%",width:"25%"}} />
               </div>
 
-              <div className="h6 text-center">{temp}°C</div>
-              <div className="location text-center">{city}</div>
-              <div className="contry text-center">{contry}</div>
+              <div className=" text-center h3">{temp}°C</div>
+              <div className="location text-center fw-bold h3">{city}</div>
+              <div className="contry text-center h4">{contry}</div>
               <div className="cordinate row col-6 mx-auto">
                 <div className="col-6 text-center">
                   <span>latitude:</span>
@@ -131,7 +139,7 @@ function App() {
                   <span>{humiditys}%</span>
                 </div>
                 <div className="float-end mb-2">
-                  <img src="" alt="" />
+                  <img src={wind_speedimg} alt="windspeed" style={{ height: "20px", width: "20px" }}/>
                   <br />
                   <span>Wind-Speed</span>
                   <br />
