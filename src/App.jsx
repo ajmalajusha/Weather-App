@@ -108,9 +108,15 @@ function App() {
             </div>
             <button type="button" onClick={search} className="btn btn-success col col-lg-1 mx-auto mt-3">Search</button>
             <div className="card-body mt-1">
-              <div className="text-center">
-                <img src={icon} alt="WeatherImg" className="img" style={{height:"25%",width:"25%"}} />
+              <div className="row">
+
+           
+
+              <div className="col-12 col-md-6 text-center">
+                <img src={icon} alt="WeatherImg" className=" img " style={{height:"75%",width:"75%"}} />
               </div>
+<div className="col-12 col-md-6">
+
 
               <div className=" text-center h3">{temp}°C</div>
               <div className="location text-center fw-bold h3">{city}</div>
@@ -160,10 +166,13 @@ function App() {
                     City Not Found ?
                   </div>
                 )}
+                </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
+        
       </div>
     </>
   );
