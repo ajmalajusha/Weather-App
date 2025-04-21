@@ -11,6 +11,11 @@ import chillcolud from "../src/assets/chillcolud.png";
 import humidityi from "../src/assets/humidity.png";
 import wind_speedimg from "../src/assets/windspeed.png";
 import "bootstrap/dist/css/bootstrap.min.css";
+import sunclimate from "../src/assets/sunclimate.jpg"
+import normalclimate from "../src/assets/normalclimate.jpg"
+import chillclimate from "../src/assets/chillclimate.jpg"
+import nightweather from "../src/assets/nightweather.jpg"
+import rainclimate from "../src/assets/rainclimate.jpg"
 import "./assets/body.css"
 
 
@@ -27,6 +32,7 @@ function App() {
   const [cityNotfount, setcityNotfount] = useState(false);
   const [loading, setloading] = useState(false);
   const [error, seterror] = useState(null);
+  const [backg, setbackg] = useState(sunclimate);
 
   const weathercode = {
     1000: sun,
@@ -40,6 +46,27 @@ function App() {
     1135: moon,
   };
 
+  const backgroundcode ={
+    1000: sunclimate,
+    1003: normalclimate,
+    1006: normalclimate,
+    1030: normalclimate,
+    1063: rainclimate,
+    1066: chillclimate,
+    1087: rainclimate,
+    1192: rainclimate,
+    1135: nightweather,
+  }
+
+  const imgStyle = {
+    width: '100%',
+    height: '100%',
+    backgroundImage: `url(${backg})`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    borderRadius: '10px',
+    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+  };
   const search = async () => {
     setloading(true);
     let url = `https://api.weatherapi.com/v1/current.json?key=876fd3d7689b415ea5310841231803&q=${tcity}`;
@@ -64,7 +91,9 @@ function App() {
 
       let dta = data.current.condition.code;
 
+     
       seticon(weathercode[dta] || icon);
+      setbackg(backgroundcode[dta] || backgroundcode);
       setcityNotfount(false);
     } catch (error) {
       console.log("Error", error);
@@ -90,9 +119,10 @@ function App() {
 
   return (
     <>
-      <div className="container">
-        <div className=" h-100 w-100 mt-5">
-          <div className="card">
+      <div className="container" >
+        <div className=" h-100 w-100 mt-5" style={imgStyle}>
+          <div className="card ">
+            <span className="text-white w-50 rounded text-center  h3">Where the Weather Meets You...</span>
             <div className="row">
 <div className="col-10 col-md-4 mx-auto">
 <input
